@@ -5,8 +5,11 @@
 ## Usage
 
 'gj SH': Let's gj jump to the shorthand it has learned for SH
+
 'gj SH PATH': Adds PATH to gjs db with the shorthand SH 
+
 'gj --discover [PATH]': Starts a discovery run with [PATH] as the root, adding all directories it finds
+
 'gj --list': Prints out all PATH = SH pairs
 
 For gj to be able to run, it needs to create a db it saves its mappings to. Per default this file is located in /home/$USER/.config/gj.db. If the db is not at this location, its path has to be given by the parameter **--db**
