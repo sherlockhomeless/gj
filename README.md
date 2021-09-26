@@ -1,5 +1,8 @@
 # GJ
 
+## Dependencies
+
+
 *GJ* is a cli-utility that helps you jump faster between different directories. GJ can learn from either looking at your shells history file, by explicitly mapping shorthands to paths or by running it in discovery mode.
 
 ## Usage

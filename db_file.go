@@ -9,7 +9,7 @@ import (
 
 /**
     * Uses a simple text file for persisting data
-    * Format KEY:VALUE
+    * Format KEY:VALUE:{KEY:VALUE}
  */
 
 type DBFile struct {
@@ -46,7 +46,7 @@ func Create (path string){
     if err != nil {
         log.Fatal(err)
     }
-    log.Println("created empty file at %s", path)
+    log.Printf("created empty file at %s", path)
     empty_file.Close()
 }
 
@@ -62,3 +62,5 @@ func (db DBFile) Delete(path string){
 func (db DBFile) Get(path string){
 
 }
+
+func
