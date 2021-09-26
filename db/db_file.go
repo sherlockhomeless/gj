@@ -62,5 +62,3 @@ func (db DBFile) Delete(path string){
 func (db DBFile) Get(path string){
 
 }
-
-func

@@ -13,5 +13,5 @@ func setup_db() DBFile {
 }
 
 func TestDBFile_Add(t *testing.T) {
-        db := setup_db()
+        //db := setup_db()
 }

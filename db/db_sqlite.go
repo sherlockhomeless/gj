@@ -14,8 +14,9 @@ const (
 var db_con *sql.DB
 
 func init() {
-	log.Println("Opening sqlite-db_ at %s", db_path)
-	db_con, err := sql.Open("sqlite3,", "simple.sqlite")
+	var err error
+	log.Printf("Opening sqlite-db_ at %s\n", db_path)
+	db_con, err = sql.Open("sqlite3", "db")
 	if err != nil{
 		log.Fatal(err)
 	}
@@ -30,6 +31,9 @@ func (db *PathDB) Get (key string) []Entry {
 }
 
 func (db *PathDB) Add (key, value, extra string, prio int) bool{
+	var stmt string
+	
+
 	return false
 }
 
