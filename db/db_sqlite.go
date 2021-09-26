@@ -32,7 +32,7 @@ func (db *PathDB) Get (key string) []Entry {
 
 func (db *PathDB) Add (key, value, extra string, prio int) bool{
 	var stmt string
-	
+
 
 	return false
 }
