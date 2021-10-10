@@ -1,7 +1,6 @@
 package db
 
 import (
-	"fmt"
 	"math/rand"
 	"testing"
 )
@@ -27,16 +26,19 @@ func Test_Add_Read(t *testing.T) {
 	full := make_printable(test_fullpath)
 
 	e := Entry{
-		key:   short,
-		value: full,
+		shorthand:   short,
+		full_path: full,
 		prio:  prio,
 		extra: "",
 	}
 
-	fmt.Printf("content: %s, %s", short, full)
+	AddEntry(&e)
 
+	res := GetShort(short)
 
-
+	if len(res) != 1{
+		t.Fail()
+	}
 
 }
 

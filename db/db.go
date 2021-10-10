@@ -7,10 +7,11 @@ type DB interface {
 	Get() string // returns value for key
 }
 
+// Entry represents the different paths found in the history
 type Entry struct {
-	key string
-	value string
-	prio int
-	extra string
+	shorthand string // shorthand is the abbreviation used to jump, for example bin instead of ~/go/bin
+	full_path string // full_path is the whole path on the system
+	prio      int    // prio determines the order if more than one shorthand matches for a full_path
+	extra     string // extra contains additional information that might be useful later
 }
 

@@ -14,7 +14,7 @@ const (
 // database connection that is opened by init-function
 var db_con *sql.DB
 
-// GetShort returns all entries where short == shorthand in db_con
+// GetShort returns all entries where shorthand == shorthand in db_con
 func GetShort(short string) []Entry {
 	rows, err := db_con.Query("SELECT * " + "FROM " + db_table + " where shorthand " )
 	handle_err(err)
@@ -32,16 +32,11 @@ func GetShort(short string) []Entry {
 	return results
 }
 
-func  Add (short, full, extra string, prio int) bool{
-	query := fmt.Sprintf("INSERT INTO %s VALUES (%s, %s, %s, %s);", db_table, short, full, string(prio), extra)
-	stmt, err := db_con.Prepare(query)
-
-
-	if err != nil {
-		panic(err)
-	}
-
-	return false
+// AddEntry creates an Entry and adds it to the db_con
+func AddEntry(e *Entry) {
+	query := fmt.Sprintf("INSERT INTO %s VALUES (%s, %s, %s, %s);", db_table, e.shorthand, e.full_path, string(e.prio), e.extra)
+	_, err := db_con.Exec(query)
+	handle_err(err)
 }
 
 
