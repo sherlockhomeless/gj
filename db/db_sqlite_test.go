@@ -13,6 +13,7 @@ func make_printable(rando []byte) string{
 	return string(rando)
 }
 
+// Test_Add_Read adds random entries to a test-db then tries to read those entries
 func Test_Add_Read(t *testing.T) {
 
 	var test_shorthand = make([]byte, 20)
@@ -34,9 +35,8 @@ func Test_Add_Read(t *testing.T) {
 
 	fmt.Printf("content: %s, %s", short, full)
 
-	if e.prio != -1 {
-		t.Fail()
-	}
+
+
 
 }
 
