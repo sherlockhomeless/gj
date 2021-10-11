@@ -29,14 +29,14 @@ func Test_Add_Read(t *testing.T) {
 		shorthand:   short,
 		full_path: full,
 		prio:  prio,
-		extra: "",
+		extra: "TESTING",
 	}
 
 	AddEntry(&e)
 
 	res := GetShort(short)
 
-	if len(res) != 1{
+	if len(res) < 1{
 		t.Fail()
 	}
 

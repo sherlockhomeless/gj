@@ -3,7 +3,7 @@
 DB=db
 TABLE=paths
 touch $DB
-if [[ ! -e $DB ]]
+if [[ -f $DB ]]
   then
     sqlite3 $DB "create table $TABLE(shorthand varchar(20), fullpath varchar(50), priority int, extra varchar(50));" ".exit"
     echo "create table $TABLE"

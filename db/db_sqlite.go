@@ -10,13 +10,17 @@ import (
 const (
 	db_path = "/home/ml/go/src/github.com/sherlockhomeless/gj/db/db" //FIXME: Make flexible
 	db_table = "paths"
+	paths_schemata = "(shorthand, fullpath, priority, extra)"
 )
 // database connection that is opened by init-function
 var db_con *sql.DB
 
 // GetShort returns all entries where shorthand == shorthand in db_con
 func GetShort(short string) []Entry {
-	rows, err := db_con.Query("SELECT * " + "FROM " + db_table + " where shorthand " )
+	query := fmt.Sprintf("SELECT * FROM %s where shorthand = \"%s\";", db_table, short)
+	rows, err := db_con.Query(query)
+	log.Printf("GetShort: Query: %s", query)
+
 	handle_err(err)
 	defer rows.Close()
 
@@ -34,7 +38,8 @@ func GetShort(short string) []Entry {
 
 // AddEntry creates an Entry and adds it to the db_con
 func AddEntry(e *Entry) {
-	query := fmt.Sprintf("INSERT INTO %s VALUES (%s, %s, %s, %s);", db_table, e.shorthand, e.full_path, string(e.prio), e.extra)
+	query := fmt.Sprintf("INSERT INTO %s%s VALUES(\"%s\", \"%s\", %s, \"%s\");", db_table, paths_schemata, e.shorthand, e.full_path, fmt.Sprint(e.prio), e.extra)
+	log.Printf("AddEntry: Query: %s", query)
 	_, err := db_con.Exec(query)
 	handle_err(err)
 }
